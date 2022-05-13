@@ -27,7 +27,7 @@ const ServicesSection = () => {
     ]
     return (
         <section className='py-24 container mx-auto'>
-            <h3 className='text-4xl text-center mb-20'> <strong className='text-xl text-primary block'>OUR SERVICES</strong> Services We Provide</h3>
+            <h3 className='text-4xl text-center mb-20'> <strong className='text-xl text-primary block mb-2'>OUR SERVICES</strong> Services We Provide</h3>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                 {
                     services.map(service => <SingleService
