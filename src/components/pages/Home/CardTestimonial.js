@@ -9,7 +9,7 @@ const CardTestimonial = ({ item }) => {
                 <div className="flex items-center mt-2">
                     <div className="avatar">
                         <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 mr-3">
-                            <img src={image} />
+                            <img src={image} alt='CardImage' />
                         </div>
                     </div>
                     <div>

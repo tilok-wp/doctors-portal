@@ -12,7 +12,7 @@ const AppionmentBanner = () => {
 
                 <div className='md:flex justify-center items-center'>
                     <div className='flex-1 mt-[-200px] hidden md:block'>
-                        <img src={doctor} />
+                        <img src={doctor} alt='doctor' />
 
                     </div>
                     <div className='flex-1 text-white p-5 md:p0'>

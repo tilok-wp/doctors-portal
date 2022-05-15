@@ -1,19 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Header = () => {
+
+    const [user] = useAuthState(auth)
+    const navigate = useNavigate()
+
+    const logout = () => {
+        signOut(auth);
+        navigate('/login')
+    };
+
     const menuItem = <>
         <li><Link to="/home">Home</Link ></li>
         <li><Link to="/about">About</Link ></li>
-        <li><Link to="/appiontment">Appionments</Link ></li>
+        <li><Link to="/appionment">Appionments</Link ></li>
         <li><Link to="/reviews">Reviews</Link ></li>
         <li><Link to="/contact" >Contact Us</Link ></li>
-        <li><Link to="/login" >Login</Link></li>
+        <li> {user ? <button onClick={logout} class="btn btn-active btn-link">Sign Out</button> : <Link to="/login" >Login</Link>}</li>
     </>
 
+
     return (
-        <header className='container mx-auto'>
-            <div className="navbar bg-base-100">
+        <header className='sticky top-0 bg-base-100 z-50'>
+            <div className="navbar container mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -23,7 +36,7 @@ const Header = () => {
                             {menuItem}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Doctors Portal</a>
+                    <Link to='/' className="btn btn-ghost normal-case text-xl">Doctors Portal</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">

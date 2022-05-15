@@ -7,7 +7,7 @@ const TearmsBanner = () => {
         <section className='container mx-auto py-10'>
             <div className='md:flex justify-center items-center'>
                 <div className='flex-1'>
-                    <img src={treatment} className="max-w-sm rounded-lg shadow-2xl mx-auto" />
+                    <img src={treatment} className="max-w-sm rounded-lg shadow-2xl mx-auto" alt='terms' />
 
                 </div>
                 <div className='flex-1 p-5 md:p-0'>

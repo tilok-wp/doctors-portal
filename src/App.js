@@ -9,6 +9,7 @@ import NotFound from './components/pages/NotFound/NotFound';
 import Register from './components/pages/Register/Register';
 import Reviews from './components/pages/Reviews/Reviews';
 import Header from './components/shared/Header/Header';
+import RequirAuth from './components/pages/Login/RequirAuth';
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/about' element={<About></About>}></Route>
-        <Route path='/appiontment' element={<Appionment></Appionment>}></Route>
+        <Route path='/appionment' element={
+          <RequirAuth><Appionment></Appionment></RequirAuth>
+        }></Route>
         <Route path='/reviews' element={<Reviews></Reviews>}></Route>
         <Route path='/contact' element={<Contact></Contact>}></Route>
         <Route path='/reviews' element={<Reviews></Reviews>}></Route>
@@ -26,7 +29,6 @@ function App() {
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
-
     </div>
 
   );
