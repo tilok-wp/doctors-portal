@@ -36,6 +36,7 @@ const Register = () => {
     }
 
     if (token) {
+        localStorage.setItem('accessToken', token)
         navigate('/appionment')
     }
     // if (gUser || user) {
