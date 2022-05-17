@@ -4,10 +4,10 @@ import auth from '../../../firebase.init';
 import { useForm } from "react-hook-form";
 import Loding from '../../shared/Loding/Loding';
 import { Link, useNavigate } from 'react-router-dom';
+import useToken from '../../../hooks/useToken';
 
 const Register = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const [
         createUserWithEmailAndPassword,
         user,
@@ -17,12 +17,14 @@ const Register = () => {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password)
         await updateProfile({ displayName: data.displayName });
         console.log(data);
-        navigate('/appionment')
+        // navigate('/appionment')
     }
+    const [token] = useToken(gUser || user)
 
     const navigate = useNavigate()
     if (gLoading || loading || updating) {
@@ -33,9 +35,13 @@ const Register = () => {
         errorMessageContent = <p className='text-red-600 py-3'>{error?.message || gError?.message || updateError.message}  </p>
     }
 
-    if (gUser || user) {
-        console.log(gUser || user)
+    if (token) {
+        navigate('/appionment')
     }
+    // if (gUser || user) {
+    //     console.log(gUser || user)
+    //     // navigate('/appionment')
+    // }
     return (
         <div className='flex justify-center items-center h-screen'>
             <div className="card w-96 bg-base-100 shadow-xl">
